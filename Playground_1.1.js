@@ -25,19 +25,19 @@ Commands include:
 
 var i;
 var all = jQuery('*');
-
+var allBody = jQuery('body *');
 
 function commands() {
 	console.log(`
-		"Commands: 																								" +'\n'+'\n'+
-		"	[BROKEN]	startPlayground()	//This starts the playground. 										" +'\n'+'\n'+
-		"	[BROKEN]	stopPlayground()	//This stops the playground. This literally just reloads the page. 	" +'\n'+'\n'+
-		"	restorePage()				//This restores the page to normal (Most of the time) 				" +'\n'+'\n'+
-		"	commands()				//This shows all of the commands 									" +'\n'+'\n'+
-		"	partyMode()				//This creates a party for your website 							" +'\n'+'\n'+
-		"	shift()					//This shifts everything in the page 								" +'\n'+'\n'+
-		"	shift(number)				//This shifts everything in the page within that distance 			" +'\n'+'\n'+
-		"	Gravity Coming Soon! 																				" +'\n'+'\n'
+		Commands:
+			[BROKEN]	startPlayground()	//This starts the playground.
+			[BROKEN]	stopPlayground()	//This stops the playground. This literally just reloads the page.
+			restorePage()				//This restores the page to normal (Most of the time)
+			commands()				//This shows all of the commands
+			partyMode()				//This creates a party for your website
+			shift()					//This shifts everything in the page
+			shift(number)				//This shifts everything in the page within that distance
+			Gravity Coming Soon!
 	`)
 }
 
@@ -107,15 +107,16 @@ function commands() {
 
 
 	function shift(n) {
-		all.css("transition" , "all 2s");
-		for (i = 0; i < all.length; i++) {
+		allBody.css("transition" , "all 2s");
+		for (i = 0; i < allBody.length; i++) {
 			//all.eq(i).css("transition" , "all 2s");
-			all.eq(i).css({
+			allBody.eq(i).css({
 				"position" : "relative",
 				"top" : (randInt((n||-300),(n||300)) + "px"),
 				"right" : (randInt((n||-300),(n||300)) + "px")
 			});
 		}
+		console.log("Shifted " + allBody.length + " elements")
 	}
 
 
