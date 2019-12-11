@@ -29,15 +29,31 @@ var allBody = jQuery('body *');
 
 function commands() {
 console.log(`
-Commands:
-	[BROKEN]	startPlayground()	//This starts the playground.
-	[BROKEN]	stopPlayground()	//This stops the playground. This literally just reloads the page.
-	restorePage()				//This restores the page to normal (Most of the time)
-	commands()				//This shows all of the commands
-	partyMode()				//This creates a party for your website
-	shift()					//This shifts everything in the page
-	shift(number)				//This shifts everything in the page within that distance
-	Gravity Coming Soon!
+	Commands:
+
+[BROKEN] startPlayground()	// This starts the playground.
+
+[BROKEN] stopPlayground()	// This stops the playground.
+				// This literally just reloads
+				// the page.
+
+restorePage()			// This restores the page to
+				// normal (Most of the time)
+
+commands()			// This shows all of the
+				// commands
+
+partyMode()			// This creates a party for
+				// your website
+
+shift()				// This shifts everything in
+				// the page
+
+shift(number)			// This shifts everything in 
+				// the page within that 
+				// distance
+
+// gravity() Coming Soon!
 `)
 }
 
