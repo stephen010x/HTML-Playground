@@ -132,7 +132,7 @@ function commands() {
 
 	*/
 
-	return "Playground has been turned on"
+	//return "Playground has been turned on"
 	
 //}
 
