@@ -2,19 +2,19 @@
 
 Commands include:
 
-	[BROKEN]	startPlayground()	//This starts the playground. None of the other functions will work unless this is activated
+	[BROKEN]	startPlayground()	//This starts the playground. Commands only work if active.
 	
 	[BROKEN]	stopPlayground()	//This stops the playground. This literally just reloads the page.
 
-	restorePage()		//This restores the page to normal (Most of the time)
+	restorePage()				//This restores the page to normal (Most of the time)
 	
-	commands()			//This shows all of the commands
+	commands()				//This shows all of the commands
 
-	partyMode()			//This creates a party for your website
+	partyMode()				//This creates a party for your website
 
-	shift()				//This shifts everything in the page
+	shift()					//This shifts everything in the page
 
-	shift(number)		//This shifts everything in the page within that distance
+	shift(number)				//This shifts everything in the page within that distance
 
 	Gravity Coming Soon!
 
@@ -32,11 +32,11 @@ function commands() {
 		"Commands: 																								" +'\n'+'\n'+
 		"	[BROKEN]	startPlayground()	//This starts the playground. 										" +'\n'+'\n'+
 		"	[BROKEN]	stopPlayground()	//This stops the playground. This literally just reloads the page. 	" +'\n'+'\n'+
-		"	restorePage()					//This restores the page to normal (Most of the time) 				" +'\n'+'\n'+
-		"	commands()						//This shows all of the commands 									" +'\n'+'\n'+
-		"	partyMode()						//This creates a party for your website 							" +'\n'+'\n'+
-		"	shift()							//This shifts everything in the page 								" +'\n'+'\n'+
-		"	shift(number)					//This shifts everything in the page within that distance 			" +'\n'+'\n'+
+		"	restorePage()				//This restores the page to normal (Most of the time) 				" +'\n'+'\n'+
+		"	commands()				//This shows all of the commands 									" +'\n'+'\n'+
+		"	partyMode()				//This creates a party for your website 							" +'\n'+'\n'+
+		"	shift()					//This shifts everything in the page 								" +'\n'+'\n'+
+		"	shift(number)				//This shifts everything in the page within that distance 			" +'\n'+'\n'+
 		"	Gravity Coming Soon! 																				" +'\n'+'\n'
 	`)
 }
@@ -46,8 +46,8 @@ function commands() {
 
 //function startPlayground() {
 
-	console.clear();
-	all.css("transition" , "all 2s");
+	/*console.clear();
+	all.css("transition" , "all 2s");*/
 	
 	i = 1;
 	function myLoop(loops,time) {
@@ -107,6 +107,7 @@ function commands() {
 
 
 	function shift(n) {
+		all.css("transition" , "all 2s");
 		for (i = 0; i < all.length; i++) {
 			//all.eq(i).css("transition" , "all 2s");
 			all.eq(i).css({
