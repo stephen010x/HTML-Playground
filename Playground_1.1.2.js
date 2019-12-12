@@ -99,8 +99,11 @@ shift(number)			// This shifts everything in
 			"-moz-opacity": "1",
 		});
 	}
+	function rand(min,max) {
+		return Math.random() * (max - min) + min;
+	}
 	function randInt(min,max) {
-		return parseInt((Math.random() * (max - min + 1)), 10) + min;
+		return parseInt(Math.random() * (max - min + 1), 10) + min;
 	}
 	function randColor() {
 		return ('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
@@ -128,8 +131,8 @@ shift(number)			// This shifts everything in
 			//all.eq(i).css("transition" , "all 2s");
 			allBody.eq(i).css({
 				"position" : "relative",
-				"top" : (randInt((n||-300),(n||300)) + "px"),
-				"right" : (randInt((n||-300),(n||300)) + "px")
+				"top" : (rand((-n||-300),(n||300)) + "px"),
+				"right" : (rand((-n||-300),(n||300)) + "px")
 			});
 		}
 		console.log("Shifted " + allBody.length + " elements")
