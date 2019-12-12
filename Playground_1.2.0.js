@@ -1,3 +1,4 @@
+var plgrVersion = "1.2.0"
 /*
 
 Commands include:
@@ -15,6 +16,8 @@ Commands include:
 	shift()					//This shifts everything in the page
 
 	shift(number)				//This shifts everything in the page within that distance
+	
+	version()				//This gives you version number of HTML Playground
 
 	Gravity Coming Soon!
 
@@ -52,6 +55,9 @@ shift()				// This shifts everything in
 shift(number)			// This shifts everything in 
 				// the page within that 
 				// distance
+
+version()			// This shows version number
+				// of HTML Playground
 
 // gravity() Coming Soon!
 `)
@@ -139,7 +145,9 @@ shift(number)			// This shifts everything in
 	}
 
 
-
+	function version() {
+		console.log("Version " + plgrVersion);
+	}
 
 
 	/*
