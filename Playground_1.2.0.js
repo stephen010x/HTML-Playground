@@ -1,21 +1,29 @@
-var plgrVersion = "1.2.0"
+skew()var pgVersion = "1.2.0"
 /*
 
 Commands include:
 
-	[BROKEN]	startPlayground()	//This starts the playground. Commands only work if active.
+	commands()			//This shows all of the commands
+
+	startPG()	//This starts the playground. Commands only work if active.
 	
-	[BROKEN]	stopPlayground()	//This stops the playground. This literally just reloads the page.
+	stopPG()	//This stops the playground. This literally just reloads the page.
 
-	restorePage()				//This restores the page to normal (Most of the time)
+	restorePage()			//This restores the page to normal (Most of the time)
+
+	partyMode()			//This creates a party for your website
+
+	shift()				//This shifts everything in the page
+
+	shift(number)			//This shifts everything in the page within that distance
 	
-	commands()				//This shows all of the commands
-
-	partyMode()				//This creates a party for your website
-
-	shift()					//This shifts everything in the page
-
-	shift(number)				//This shifts everything in the page within that distance
+	skewPage()			//
+	
+	skewPage(degrees)
+	
+	skew()
+	
+	skew(degrees)
 	
 	version()				//This gives you version number of HTML Playground
 
@@ -27,43 +35,58 @@ Commands include:
 // Note to self, declare function variables early, but only set them up when the playground is started.
 
 var i;
-var all = jQuery('*');
-var allBody = jQuery('body *');
+var all;
+var allBody;
 
 function commands() {
 console.log(`
 	Commands:
 
-[BROKEN] startPlayground()	// This starts the playground.
+commands()		// This shows all of the
+			// commands. Doesn't require 
+			// startPlayground()
 
-[BROKEN] stopPlayground()	// This stops the playground.
-				// This literally just reloads
-				// the page.
+startPG()		// This starts the playground.
 
-restorePage()			// This restores the page to
-				// normal (Most of the time)
+stopPG()		// This stops the playground.
+			// This literally just reloads
+			// the page.
 
-commands()			// This shows all of the
-				// commands
+restorePage()		// This restores the page to
+			// normal (Most of the time)
 
-partyMode()			// This creates a party for
-				// your website
+partyMode()		// This creates a party for
+			// your website
 
-shift()				// This shifts everything in
-				// the page
+shift()			// This shifts everything in
+			// the page
 
-shift(number)			// This shifts everything in 
-				// the page within that 
-				// distance
+shift(number)		// This shifts everything in 
+			// the page within that 
+			// distance
 
-version()			// This shows version number
-				// of HTML Playground
+version()		// This shows version number
+			// of HTML Playground
 
 // gravity() Coming Soon!
 `)
 }
 
+// Idea for cleanup. Just store css in a certain place instead of putting it in element (as well as javascript) 
+// and then delete it aftarwards.
 
+// These startPG and stopPG are temporary functions until the real thing works
+function startPG() {
+	all = jQuery('*');
+	allBody = jQuery('body *');
+	console.log('HTML PlayGround V.'+ pgVersion +' active')
+}
+function stopPG() {
+	all = null;
+	allBody = null;
+	restorePage()
+	console.log('HTML PlayGround disabled')
+}
 
 
 //function startPlayground() {
@@ -105,6 +128,12 @@ version()			// This shows version number
 			"-moz-opacity": "1",
 		});
 	}
+	function skewPage(degrees) {
+		rotate('body', degrees || 1)
+	}
+	function rotate(element, degrees) {
+		jQuery(element)[0].style.setProperty("-webkit-transform", "rotate(" + degrees + "deg)");
+	}
 	function rand(min,max) {
 		return Math.random() * (max - min) + min;
 	}
@@ -126,7 +155,20 @@ version()			// This shows version number
 		}, 2000);
 		return "Lets Party!"
 	}
+	
 
+
+
+	function runJQuery() {
+		javascript: (function(e, s) {
+			e.src = s;
+			e.onload = function() {
+				jQuery.noConflict();
+				console.log('jQuery injected');
+			};
+			document.head.appendChild(e);
+		})(document.createElement('script'), '//code.jquery.com/jquery-latest.min.js')
+	}
 
 
 
@@ -143,12 +185,23 @@ version()			// This shows version number
 		}
 		console.log("Shifted " + allBody.length + " elements")
 	}
-
+	function skew(d) {
+		allBody.css("transition" , "all 2s");
+		for (i = 0; i < allBody.length; i++) {
+			allBody.eq(i).css("-webkit-transform" , "rotate(" + rand((-d||-5),(d||5)) + "deg)");
+		}
+		console.log("Skewed " + allBody.length + " elements")}
 
 	function version() {
-		console.log("Version " + plgrVersion);
+		console.log("Version " + pgVersion);
+	
 	}
-
+	function hell(magnitude) {
+		magnitude = magnitude/100 || 1;
+		skew(300 * magnitude);
+		shift(360 * magnitude);
+		partyMode();
+	}
 
 	/*
 
@@ -161,7 +214,7 @@ version()			// This shows version number
 
 	*/
 
-	//return "Playground has been turned on"
+	//return "Playground has been turned on. Type 'commands()'"
 	
 //}
 
