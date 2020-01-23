@@ -1,4 +1,4 @@
-skew()var pgVersion = "1.2.0"
+var pgVersion = "1.2.0"
 /*
 
 Commands include:
